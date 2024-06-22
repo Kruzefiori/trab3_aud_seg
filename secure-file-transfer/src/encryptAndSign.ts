@@ -12,17 +12,17 @@ const macAlgorithm = 'sha256';
 function encryptAndSignFile(filePath: string, outputFilePath: string): void {
   const fileContent = fs.readFileSync(filePath);
 
-  // Encrypt the file
+  // Encripta o arquivo
   const cipher = crypto.createCipheriv(algorithm, key, iv);
   let encrypted = cipher.update(fileContent);
   encrypted = Buffer.concat([encrypted, cipher.final()]);
 
-  // Generate MAC
+  // Gera o MAC
   const hmac = crypto.createHmac(macAlgorithm, hmacKey);
   hmac.update(encrypted);
   const mac = hmac.digest();
 
-  // Combine IV, encrypted content, and MAC
+  // Combina IV, conteúdo encriptado e MAC
   const combined = Buffer.concat([iv, encrypted, mac]);
 
   fs.writeFileSync(outputFilePath, combined);
