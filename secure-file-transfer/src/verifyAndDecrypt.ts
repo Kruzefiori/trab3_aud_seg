@@ -35,6 +35,12 @@ function verifyAndDecryptFile(encryptedFilePath: string, outputFilePath: string)
   console.log(`File decrypted and verified successfully: ${outputFilePath}`);
 }
 
-const encryptedFile = 'data/output.enc';
-const decryptedFile = 'data/decrypted.txt';
+// pegue os caminhos dos arquivos da linha de comando
+const [encryptedFile, decryptedFile] = process.argv.slice(2);
+
+if (!encryptedFile || !decryptedFile) {
+  console.error('Usage: npx ts-node src/verifyAndDecrypt.ts <encryptedFilePath> <decryptedFilePath>');
+  process.exit(1);
+}
+
 verifyAndDecryptFile(encryptedFile, decryptedFile);

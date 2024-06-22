@@ -1,0 +1,6 @@
+Necessário ter o Node.js instalado na máquina
+Rodar o comando `npm install` para instalar as dependências do projeto
+Comandos para execução do projeto:
+npx ts-node src/generateKeys.ts - Gera as chaves de criptografia para serem as mesmas entre os arquivos 
+npx ts-node src/verifyAndDecrypt.ts data/output.enc data/decrypted.txt - Desencripta o arquivo com base em um caminho enviado por parametro da linha de comando
+npx ts-node src/verifyAndDecrypt.ts data/output.enc data/decrypted.txt - Desencripta o arquivo com base em um caminho enviado por parametro da linha de comando

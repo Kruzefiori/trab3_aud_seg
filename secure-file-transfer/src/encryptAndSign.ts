@@ -29,6 +29,12 @@ function encryptAndSignFile(filePath: string, outputFilePath: string): void {
   console.log(`File encrypted and signed successfully: ${outputFilePath}`);
 }
 
-const inputFile = 'data/input.txt';
-const outputFile = 'data/output.enc';
+// pegue os caminhos dos arquivos da linha de comando
+const [inputFile, outputFile] = process.argv.slice(2);
+
+if (!inputFile || !outputFile) {
+  console.error('Usage: npx ts-node src/encryptAndSign.ts <inputFilePath> <outputFilePath>');
+  process.exit(1);
+}
+
 encryptAndSignFile(inputFile, outputFile);
